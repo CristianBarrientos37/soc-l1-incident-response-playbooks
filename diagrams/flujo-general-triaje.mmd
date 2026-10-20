@@ -1,5 +1,5 @@
 flowchart TD
-    A[Alerta llega al SOC<br/>Wazuh Dashboard / SIEM] --> B{¿Es una alerta<br/>obviamente falsa?}
+    A[Alerta llega al SIEM] --> B{¿Es una alerta<br/>obviamente falsa?}
     
     B -->|Sí - False Positive| C[Cerrar como False Positive<br/>Documentar motivo]
     B -->|No / Dudosa| D[Asignar ticket a Analista L1]
