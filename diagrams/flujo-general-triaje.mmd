@@ -1,0 +1,12 @@
+flowchart TD
+    A[Alerta llega a Wazuh Dashboard] --> B{¿Es falsa positiva obvia?}
+    B -->|Sí| C[Cerrar como False Positive<br/>Documentar]
+    B -->|No| D[Asignar ticket L1]
+    D --> E[Recopilar evidencia mínima]
+    E --> F{¿Hay impacto o compromiso confirmado?}
+    F -->|No| G[Monitoreo / Investigación adicional]
+    F -->|Sí| H[Contención L1]
+    H --> I{¿Requiere privilegios o expertise L2?}
+    I -->|No| J[Resolver y cerrar]
+    I -->|Sí| K[Escalar a L2 / IR Team]
+    K --> L[Handoff con timeline completo]

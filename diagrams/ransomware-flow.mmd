@@ -1,0 +1,34 @@
+flowchart TD
+    A[Alerta de Ransomware<br/>o comportamiento sospechoso] --> B{Confirmación rápida<br/>≤ 2-3 minutos}
+    
+    B --> B1[Revisar proceso sospechoso]
+    B --> B2[Extensiones de archivos modificados]
+    B --> B3[¿Existe ransom note?]
+    
+    B1 & B2 & B3 --> C{¿Es ransomware<br/>confirmado o altamente sospechoso?}
+    
+    C -->|No - Falso positivo| D[Cerrar como FP<br/>Documentar]
+    C -->|Sí| E[CONTENCIÓN INMEDIATA]
+    
+    E --> E1[Aislar el endpoint<br/>Wazuh Active Response / EDR / Red]
+    E --> E2[NO apagar el equipo<br/>Preservar evidencia volátil]
+    
+    E1 & E2 --> F[Identificar alcance]
+    F --> F1[¿Más endpoints afectados?]
+    F --> F2[¿Shares de red montados?]
+    F --> F3[Identificar proceso padre]
+    
+    F1 & F2 & F3 --> G[Notificar y Escalar]
+    G --> G1[Crear ticket Crítico]
+    G --> G2[Notificar a L2 + Incident Commander]
+    G --> G3[Adjuntar timeline + evidencia]
+    
+    G1 & G2 & G3 --> H[Handoff a IR Team]
+    
+    style A fill:#8b0000,stroke:#333,color:#fff
+    style C fill:#2d5a27,stroke:#333,color:#fff
+    style E fill:#8b0000,stroke:#333,color:#fff
+    style E1 fill:#8b0000,stroke:#333,color:#fff
+    style G fill:#8b0000,stroke:#333,color:#fff
+    style H fill:#8b0000,stroke:#333,color:#fff
+    style D fill:#555,stroke:#333,color:#fff

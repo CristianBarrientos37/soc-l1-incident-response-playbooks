@@ -1,0 +1,38 @@
+flowchart TD
+    A[Alerta recibida<br/>Phishing / Credenciales] --> B{Validar alerta<br/>¿Es legítima?}
+    
+    B -->|False Positive| C[Cerrar ticket<br/>Documentar FP]
+    B -->|True Positive| D[Recopilar evidencia mínima]
+    
+    D --> D1[Remitente + Asunto + URL/Adjunto]
+    D --> D2[Hash del adjunto si existe]
+    D --> D3[IP origen del clic/login]
+    D --> D4[Usuario y endpoint afectado]
+    
+    D1 & D2 & D3 & D4 --> E{¿Se usaron las<br/>credenciales?}
+    
+    E -->|No| F[Acciones preventivas]
+    F --> F1[Bloquear URL/dominio]
+    F --> F2[Educar al usuario]
+    F --> F3[Monitorear cuenta]
+    F1 & F2 & F3 --> G[Documentar y cerrar<br/>como True Positive]
+    
+    E -->|Sí| H[Contención inmediata]
+    H --> H1[Resetear contraseña]
+    H --> H2[Forzar cierre de sesiones]
+    H --> H3[Revisar logins posteriores]
+    
+    H1 & H2 & H3 --> I{¿Hay movimiento lateral<br/>o privilegios elevados?}
+    
+    I -->|No| J[Resolver en L1<br/>Documentar timeline]
+    I -->|Sí| K[Escalar a L2 / IR Team<br/>Handoff completo]
+    
+    style A fill:#1e3a5f,stroke:#333,color:#fff
+    style B fill:#2d5a27,stroke:#333,color:#fff
+    style E fill:#2d5a27,stroke:#333,color:#fff
+    style I fill:#2d5a27,stroke:#333,color:#fff
+    style H fill:#8b0000,stroke:#333,color:#fff
+    style K fill:#8b0000,stroke:#333,color:#fff
+    style C fill:#555,stroke:#333,color:#fff
+    style G fill:#555,stroke:#333,color:#fff
+    style J fill:#555,stroke:#333,color:#fff
