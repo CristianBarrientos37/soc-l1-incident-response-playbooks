@@ -13,7 +13,7 @@ Este repositorio actúa como un **Manual de Procedimientos (SOP)** y colección 
 
 ## Laboratorio utilizado
 
-Se utilizó un laboratorio casero con **4 máquinas virtuales** configuradas según la guía de laboratorio SOC + Wazuh:
+Se utilizó un laboratorio casero con **4 máquinas virtuales** configuradas según la guía de laboratorio [SOC + Wazuh](https://github.com/CristianBarrientos37/soc-l1-incident-response-playbooks):
 
 | Rol                    | Sistema Operativo      | Función principal                          |
 |------------------------|------------------------|--------------------------------------------|
