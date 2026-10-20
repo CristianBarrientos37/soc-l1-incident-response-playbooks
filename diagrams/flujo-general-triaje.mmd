@@ -1,12 +1,47 @@
 flowchart TD
-    A[Alerta llega a Wazuh Dashboard] --> B{¿Es falsa positiva obvia?}
-    B -->|Sí| C[Cerrar como False Positive<br/>Documentar]
-    B -->|No| D[Asignar ticket L1]
+    A[Alerta llega al SOC<br/>Wazuh Dashboard / SIEM] --> B{¿Es una alerta<br/>obviamente falsa?}
+    
+    B -->|Sí - False Positive| C[Cerrar como False Positive<br/>Documentar motivo]
+    B -->|No / Dudosa| D[Asignar ticket a Analista L1]
+    
     D --> E[Recopilar evidencia mínima]
-    E --> F{¿Hay impacto o compromiso confirmado?}
-    F -->|No| G[Monitoreo / Investigación adicional]
-    F -->|Sí| H[Contención L1]
-    H --> I{¿Requiere privilegios o expertise L2?}
-    I -->|No| J[Resolver y cerrar]
-    I -->|Sí| K[Escalar a L2 / IR Team]
-    K --> L[Handoff con timeline completo]
+    E --> E1[Host / Usuario afectado]
+    E --> E2[Timestamp y regla de detección]
+    E --> E3[IPs, hashes, URLs, procesos]
+    E --> E4[Contexto adicional del endpoint]
+    
+    E1 & E2 & E3 & E4 --> F{¿Hay indicios de<br/>compromiso o impacto?}
+    
+    F -->|No| G[Clasificar y monitorear]
+    G --> G1[Documentar hallazgos]
+    G --> G2[Cerrar como True Positive<br/>sin impacto / Informational]
+    
+    F -->|Sí| H[Ejecutar Contención L1]
+    H --> H1[Aislar host si es necesario]
+    H --> H2[Reset de credenciales]
+    H --> H3[Bloqueo de IP / dominio / URL]
+    H --> H4[Otras acciones de contención]
+    
+    H1 & H2 & H3 & H4 --> I{¿Se puede resolver<br/>completamente en L1?}
+    
+    I -->|Sí| J[Resolver incidente]
+    J --> J1[Completar timeline]
+    J --> J2[Actualizar ticket]
+    J --> J3[Cerrar como True Positive<br/>Resuelto en L1]
+    
+    I -->|No| K[Escalar a L2 / IR Team]
+    K --> K1[Preparar handoff completo]
+    K --> K2[Incluir timeline + evidencia]
+    K --> K3[Notificar según severidad]
+    K --> L[Transferencia formal del caso]
+    
+    style A fill:#1e3a5f,stroke:#333,color:#fff
+    style B fill:#2d5a27,stroke:#333,color:#fff
+    style F fill:#2d5a27,stroke:#333,color:#fff
+    style I fill:#2d5a27,stroke:#333,color:#fff
+    style H fill:#8b0000,stroke:#333,color:#fff
+    style K fill:#8b0000,stroke:#333,color:#fff
+    style L fill:#8b0000,stroke:#333,color:#fff
+    style C fill:#555,stroke:#333,color:#fff
+    style G2 fill:#555,stroke:#333,color:#fff
+    style J3 fill:#555,stroke:#333,color:#fff
