@@ -1,0 +1,5 @@
+*.log
+*.pcap
+secrets/
+credentials/
+*.env
