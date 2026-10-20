@@ -24,13 +24,14 @@ Se utilizó un laboratorio casero con **4 máquinas virtuales** configuradas seg
 
 ## Estructura del repositorio
 
+```text
 ├── docs/                  # Metodología y contexto del laboratorio
 ├── playbooks/             # Playbooks operativos L1
 ├── diagrams/              # Diagramas de flujo (Mermaid)
 ├── templates/             # Plantillas de tickets y checklists
 ├── mitre/                 # Mapeo de técnicas ATT&CK
 └── examples/              # Ejemplos rellenados de tickets reales del lab
-
+```
 
 ## Playbooks incluidos
 
