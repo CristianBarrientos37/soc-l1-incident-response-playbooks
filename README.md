@@ -18,7 +18,7 @@ Se utilizó un laboratorio casero con **4 máquinas virtuales** configuradas seg
 | Rol                    | Sistema Operativo      | Función principal                          |
 |------------------------|------------------------|--------------------------------------------|
 | Wazuh Manager + Dashboard | Ubuntu 22.04         | SIEM, reglas, alertas, visualización       |
-| Endpoint Windows       | Windows 10/11          | Agente Wazuh + Sysmon                      |
+| Endpoint Windows       | Windows Server          | Agente Wazuh + Sysmon                      |
 | Endpoint Linux         | Ubuntu 22.04           | Agente Wazuh + auditd + FIM                |
 | Máquina Atacante       | Kali Linux             | Simulación de ataques controlados          |
 
@@ -29,8 +29,7 @@ Se utilizó un laboratorio casero con **4 máquinas virtuales** configuradas seg
 ├── playbooks/             # Playbooks operativos L1
 ├── diagrams/              # Diagramas de flujo (Mermaid)
 ├── templates/             # Plantillas de tickets y checklists
-├── mitre/                 # Mapeo de técnicas ATT&CK
-└── examples/              # Ejemplos rellenados de tickets reales del lab
+└──  mitre/                 # Mapeo de técnicas ATT&CK
 ```
 
 ## Playbooks incluidos
