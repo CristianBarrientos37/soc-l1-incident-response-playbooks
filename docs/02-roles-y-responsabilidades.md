@@ -1,3 +1,9 @@
+
+---
+
+### 2. `docs/02-roles-y-responsabilidades.md`
+
+```markdown
 # 02 - Roles y Responsabilidades en el SOC
 
 Este documento define los roles típicos dentro de un Security Operations Center (SOC) y detalla específicamente las responsabilidades del **Analista SOC L1**, que es el perfil al que está orientado este repositorio de portafolio.
